@@ -14,6 +14,19 @@ font_path = "./fonts/malgun.ttf"  # Windows의 경우
 font_name = font_manager.FontProperties(fname=font_path).get_name()
 rc('font', family=font_name)
 
+st.markdown(
+    """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+    * {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # 데이터 입력
 normal = 1948  # 정상
 abnormal = 628  # 불량
