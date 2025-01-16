@@ -6,7 +6,7 @@ from matplotlib import font_manager, rc
 import time  # 애니메이션을 위한 time 모듈 import
 
 # 한글 폰트 설정
-font_path = "fonts/NOTOSANS.ttf"  # ttf 파일 경로
+font_path = "./fonts/Nanum_Gothic/NanumGothic-Bold.ttf"  # ttf 파일 경로
 font_prop = font_manager.FontProperties(fname=font_path)
 
 print("폰트 이름:", font_prop.get_name())
@@ -141,9 +141,9 @@ with tab1:
         df = pd.DataFrame(data, index=years)
         fig2, ax2 = plt.subplots()
         df.plot(kind="barh", stacked=True, ax=ax2, color=["#4CAF50", "#FFC107", "#9E9E9E"])
-        ax2.set_xlabel("개수", fontproperties=font_manager.FontProperties(fname=font_path))
-        ax2.set_ylabel("연근", fontproperties=font_manager.FontProperties(fname=font_path))
-        ax2.set_title("연근 별 크기 분포", fontproperties=font_manager.FontProperties(fname=font_path))
+        ax2.set_xlabel("개수")
+        ax2.set_ylabel("연근")
+        ax2.set_title("연근 별 크기 분포")
         st.pyplot(fig2)
 
 # 두 번째 탭
