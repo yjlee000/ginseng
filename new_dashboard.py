@@ -167,8 +167,11 @@ with col4:
     years = ["4년근", "5년근", "6년근"]
     data = {"대": [4, 5, 6], "중": [3, 3, 4], "소": [3, 2, 3]}
     df = pd.DataFrame(data, index=years)
+
     fig2, ax2 = plt.subplots()
     df.plot(kind="barh", stacked=True, ax=ax2, color=["#4CAF50", "#FFC107", "#9E9E9E"])
+
+    # 축 라벨 설정
     ax2.set_xlabel("개수", fontproperties=font_manager.FontProperties(fname=font_path))
     ax2.set_ylabel("연근", fontproperties=font_manager.FontProperties(fname=font_path))
     ax2.set_title("연근 별 크기 분포", fontproperties=font_manager.FontProperties(fname=font_path))
@@ -176,7 +179,9 @@ with col4:
     # y축 한글 폰트 설정
     ax2.set_yticks(range(len(years)))
     ax2.set_yticklabels(years, fontproperties=font_manager.FontProperties(fname=font_path))
+
     st.pyplot(fig2)
+
 
 # 두 번째 탭
 with tab2:
