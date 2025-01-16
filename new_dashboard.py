@@ -236,12 +236,12 @@ if uploaded_file is not None:
             images = ["images/image1.png", "images/image2.png", "images/image3.png", "images/image4.png", "images/image5.png", "images/image6.png"]
             for i in range(6):
                 with img_cols[i % 3]:
-                    st.image(images[i], use_column_width=True)
+                    st.image(images[i], use_container_width=True)
     
         # 분석 결과 이미지
         with cols_main[1]:
             st.write("### 결과 이미지")
-            st.image("images/result_image.png", caption="분석 결과 이미지", use_column_width=True)  # use_column_width, use_container_width
+            st.image("images/result_image.png", caption="분석 결과 이미지", use_container_width=True)  # use_column_width, use_container_width
     
         # 원형 그래프
         with cols_main[2]:
@@ -282,58 +282,6 @@ if uploaded_file is not None:
                 ax2.set_title("농장 분석", fontproperties=font_prop)
                 st.pyplot(fig2)
 
-# ###################################################################################################
-# import pandas as pd
-# import streamlit as st
-# import matplotlib.pyplot as plt
-
-# # Streamlit 페이지 설정
-# st.set_page_config(
-#     page_title="AIoFarm 종합 모니터링 DashBoard",
-#     layout="wide",
-# )
-
-# # CSV 파일 업로드
-# uploaded_file = st.file_uploader("CSV 파일 업로드", type=["csv"])
-
-# if uploaded_file is not None:
-#     # CSV 파일 읽기
-#     df = pd.read_csv(uploaded_file)
-    
-#     # '불량' 컬럼 계산: '등외품', '재투입', '불량' 중 하나라도 1인 경우
-#     df["불량"] = df[["등외품", "재투입", "불량"]].max(axis=1)
-
-#     # 주요 통계 계산
-#     total = len(df)  # 총 데이터 개수
-#     abnormal = df["불량"].sum()  # 불량 개수
-#     normal = total - abnormal  # 정상 개수
-#     abnormal_rate = (abnormal / total) * 100  # 불량률
-
-#     # 통계 데이터 출력
-#     st.subheader("통계 정보")
-#     col1, col2, col3, col4 = st.columns(4)
-#     col1.metric("총 데이터", total)
-#     col2.metric("정상 데이터", normal)
-#     col3.metric("불량 데이터", abnormal)
-#     col4.metric("불량률 (%)", round(abnormal_rate, 2))
-
-#     # 데이터 테이블 출력
-#     st.subheader("업로드된 데이터")
-#     st.dataframe(df)
-
-#     # 불량 데이터를 시각화 (원형 그래프)
-#     st.subheader("불량 데이터 비율")
-#     fig, ax = plt.subplots()
-#     ax.pie(
-#         [normal, abnormal],
-#         labels=["정상", "불량"],
-#         autopct="%1.1f%%",
-#         startangle=90,
-#         colors=["#4CAF50", "#F44336"],
-#     )
-#     ax.axis("equal")
-#     st.pyplot(fig)
-
-# else:
-#     st.info("CSV 파일을 업로드해주세요.")
+else:
+    st.info("CSV 파일을 업로드해주세요.")
 
