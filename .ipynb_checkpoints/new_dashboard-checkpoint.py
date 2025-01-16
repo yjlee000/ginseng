@@ -6,7 +6,7 @@ from matplotlib import font_manager, rc
 import time  # 애니메이션을 위한 time 모듈 import
 
 # 한글 폰트 설정
-font_path = "./fonts/malgun.ttf"
+font_path = "fonts/malgun.ttf"
 
 if os.path.exists(font_path):
     font_name = font_manager.FontProperties(fname=font_path).get_name()
