@@ -150,7 +150,7 @@ with tab2:
     with cols_main[0]:
         st.write("### 2x3 이미지")
         img_cols = st.columns(3)
-        images = ["image1.png", "image2.png", "image3.png", "image4.png", "image5.png", "image6.png"]
+        images = ["images/image1.png", "images/image2.png", "images/image3.png", "images/image4.png", "images/image5.png", "images/image6.png"]
         for i in range(6):
             with img_cols[i % 3]:
                 st.image(images[i], use_column_width=True)
@@ -158,7 +158,7 @@ with tab2:
     # 분석 결과 이미지
     with cols_main[1]:
         st.write("### 결과 이미지")
-        st.image("result_image.png", caption="분석 결과 이미지", use_column_width=True)
+        st.image("images/result_image.png", caption="분석 결과 이미지", use_column_width=True)
 
     # 원형 그래프
     with cols_main[2]:
