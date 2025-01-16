@@ -4,27 +4,15 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 import time  # 애니메이션을 위한 time 모듈 import
 
+# 한글 폰트 설정
+font_path = "./fonts/malgun.ttf"
+
+if os.path.exists(font_path):
+    font_name = font_manager.FontProperties(fname=font_path).get_name()
+    rc('font', family=font_name)
 st.set_page_config(
     page_title="AIoFarm 종합 모니터링 DashBoard",
     layout="wide",
-)
-
-# 한글 폰트 설정
-font_path = "./fonts/malgun.ttf"  # Windows의 경우
-font_name = font_manager.FontProperties(fname=font_path).get_name()
-rc('font', family=font_name)
-
-st.markdown(
-    """
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
-
-    * {
-        font-family: 'Noto Sans KR', sans-serif;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
 )
 
 # 데이터 입력
