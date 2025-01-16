@@ -6,7 +6,10 @@ from matplotlib import font_manager, rc
 import time  # 애니메이션을 위한 time 모듈 import
 
 # 한글 폰트 설정
-font_path = "fonts/malgun.ttf"
+font_path = "fonts/NOTOSANS.ttf"  # ttf 파일 경로
+font_prop = font_manager.FontProperties(fname=font_path)
+
+print("폰트 이름:", font_prop.get_name())
 
 if os.path.exists(font_path):
     font_name = font_manager.FontProperties(fname=font_path).get_name()
@@ -162,7 +165,7 @@ with tab2:
     # 분석 결과 이미지
     with cols_main[1]:
         st.write("### 결과 이미지")
-        st.image("images/result_image.png", caption="분석 결과 이미지", use_column_width=True)
+        st.image("images/result_image.png", caption="분석 결과 이미지", use_container_width=True)
 
     # 원형 그래프
     with cols_main[2]:
