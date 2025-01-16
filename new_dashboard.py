@@ -109,21 +109,24 @@ with tab1:
     with col2:
         st.subheader("4년근")
         fig, ax = plt.subplots()
-        ax.pie([40, 35, 25], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90)
+        ax.pie([40, 35, 25], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90, 
+              textprops={"fontproperties": font_manager.FontProperties(fname=font_path)})
         ax.axis("equal")
         st.pyplot(fig)
 
     with col3:
         st.subheader("5년근")
         fig, ax = plt.subplots()
-        ax.pie([50, 30, 20], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90)
+        ax.pie([50, 30, 20], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90, 
+              textprops={"fontproperties": font_manager.FontProperties(fname=font_path)})
         ax.axis("equal")
         st.pyplot(fig)
 
     with col3:
         st.subheader("6년근")
         fig, ax = plt.subplots()
-        ax.pie([60, 25, 15], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90)
+        ax.pie([60, 25, 15], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90, 
+              textprops={"fontproperties": font_manager.FontProperties(fname=font_path)})
         ax.axis("equal")
         st.pyplot(fig)
 
@@ -135,9 +138,9 @@ with tab1:
         df = pd.DataFrame(data, index=years)
         fig2, ax2 = plt.subplots()
         df.plot(kind="barh", stacked=True, ax=ax2, color=["#4CAF50", "#FFC107", "#9E9E9E"])
-        ax2.set_xlabel("개수")
-        ax2.set_ylabel("연근")
-        ax2.set_title("연근 별 크기 분포")
+        ax2.set_xlabel("개수", fontproperties=font_manager.FontProperties(fname=font_path))
+        ax2.set_ylabel("연근", fontproperties=font_manager.FontProperties(fname=font_path))
+        ax2.set_title("연근 별 크기 분포", fontproperties=font_manager.FontProperties(fname=font_path))
         st.pyplot(fig2)
 
 # 두 번째 탭
@@ -154,7 +157,7 @@ with tab2:
         images = ["images/image1.png", "images/image2.png", "images/image3.png", "images/image4.png", "images/image5.png", "images/image6.png"]
         for i in range(6):
             with img_cols[i % 3]:
-                st.image(images[i], use_column_width=True)
+                st.image(images[i], use_container_width=True)
 
     # 분석 결과 이미지
     with cols_main[1]:
