@@ -109,42 +109,70 @@ with tab1:
         )
 
     # 원형 차트
-    with col2:
-        st.subheader("4년근", fontproperties=font_prop)
-        fig, ax = plt.subplots()
-        ax.pie([40, 35, 25], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90, 
-              textprops={"fontproperties": font_manager.FontProperties(fname=font_path)})
-        ax.axis("equal")
-        st.pyplot(fig)
+with col2:
+    # Streamlit 제목 출력 (HTML 방식으로 폰트 적용)
+    st.markdown(
+        f"<h3 style='font-family: \"Noto Sans KR\";'>4년근</h3>",
+        unsafe_allow_html=True,
+    )
+    fig, ax = plt.subplots()
+    ax.pie(
+        [40, 35, 25],
+        labels=["대", "중", "소"],
+        autopct="%1.1f%%",
+        startangle=90,
+        textprops={"fontproperties": font_manager.FontProperties(fname=font_path)},
+    )
+    ax.axis("equal")
+    st.pyplot(fig)
 
-    with col3:
-        st.subheader("5년근", fontproperties=font_prop)
-        fig, ax = plt.subplots()
-        ax.pie([50, 30, 20], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90, 
-              textprops={"fontproperties": font_manager.FontProperties(fname=font_path)})
-        ax.axis("equal")
-        st.pyplot(fig)
+with col3:
+    st.markdown(
+        f"<h3 style='font-family: \"Noto Sans KR\";'>5년근</h3>",
+        unsafe_allow_html=True,
+    )
+    fig, ax = plt.subplots()
+    ax.pie(
+        [50, 30, 20],
+        labels=["대", "중", "소"],
+        autopct="%1.1f%%",
+        startangle=90,
+        textprops={"fontproperties": font_manager.FontProperties(fname=font_path)},
+    )
+    ax.axis("equal")
+    st.pyplot(fig)
 
-    with col3:
-        st.subheader("6년근", fontproperties=font_prop)
-        fig, ax = plt.subplots()
-        ax.pie([60, 25, 15], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90, 
-              textprops={"fontproperties": font_manager.FontProperties(fname=font_path)})
-        ax.axis("equal")
-        st.pyplot(fig)
+with col3:
+    st.markdown(
+        f"<h3 style='font-family: \"Noto Sans KR\";'>6년근</h3>",
+        unsafe_allow_html=True,
+    )
+    fig, ax = plt.subplots()
+    ax.pie(
+        [60, 25, 15],
+        labels=["대", "중", "소"],
+        autopct="%1.1f%%",
+        startangle=90,
+        textprops={"fontproperties": font_manager.FontProperties(fname=font_path)},
+    )
+    ax.axis("equal")
+    st.pyplot(fig)
 
-    # 가로 막대 그래프
-    with col4:
-        st.subheader("연근 별 크기 선별 현황")
-        years = ["4년근", "5년근", "6년근"]
-        data = {"대": [4, 5, 6], "중": [3, 3, 4], "소": [3, 2, 3]}
-        df = pd.DataFrame(data, index=years)
-        fig2, ax2 = plt.subplots()
-        df.plot(kind="barh", stacked=True, ax=ax2, color=["#4CAF50", "#FFC107", "#9E9E9E"])
-        ax2.set_xlabel("개수", fontproperties=font_prop)
-        ax2.set_ylabel("연근", fontproperties=font_prop)
-        ax2.set_title("연근 별 크기 분포", fontproperties=font_prop)
-        st.pyplot(fig2)
+# 가로 막대 그래프
+with col4:
+    st.markdown(
+        f"<h3 style='font-family: \"Noto Sans KR\";'>연근 별 크기 선별 현황</h3>",
+        unsafe_allow_html=True,
+    )
+    years = ["4년근", "5년근", "6년근"]
+    data = {"대": [4, 5, 6], "중": [3, 3, 4], "소": [3, 2, 3]}
+    df = pd.DataFrame(data, index=years)
+    fig2, ax2 = plt.subplots()
+    df.plot(kind="barh", stacked=True, ax=ax2, color=["#4CAF50", "#FFC107", "#9E9E9E"])
+    ax2.set_xlabel("개수", fontproperties=font_manager.FontProperties(fname=font_path))
+    ax2.set_ylabel("연근", fontproperties=font_manager.FontProperties(fname=font_path))
+    ax2.set_title("연근 별 크기 분포", fontproperties=font_manager.FontProperties(fname=font_path))
+    st.pyplot(fig2)
 
 # 두 번째 탭
 with tab2:
