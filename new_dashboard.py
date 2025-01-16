@@ -172,6 +172,10 @@ with col4:
     ax2.set_xlabel("개수", fontproperties=font_manager.FontProperties(fname=font_path))
     ax2.set_ylabel("연근", fontproperties=font_manager.FontProperties(fname=font_path))
     ax2.set_title("연근 별 크기 분포", fontproperties=font_manager.FontProperties(fname=font_path))
+
+    # y축 한글 폰트 설정
+    ax2.set_yticks(range(len(years)))
+    ax2.set_yticklabels(years, fontproperties=font_manager.FontProperties(fname=font_path))
     st.pyplot(fig2)
 
 # 두 번째 탭
@@ -201,7 +205,9 @@ with tab2:
         pie_cols = st.columns(2)
         with pie_cols[0]:
             fig1, ax1 = plt.subplots()
-            ax1.pie([75.6, 24.4], labels=["정상", "불량"], autopct="%.1f%%", startangle=90, colors=["green", "orange"])
+            ax1.pie([75.6, 24.4], labels=["정상", "불량"], autopct="%.1f%%", startangle=90, 
+                    textprops={"fontproperties": font_manager.FontProperties(fname=font_path)}, 
+                    colors=["green", "orange"])
             ax1.set_title("누적 데이터", fontproperties=font_prop)
             st.pyplot(fig1)
         with pie_cols[1]:
