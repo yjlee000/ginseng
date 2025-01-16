@@ -141,9 +141,9 @@ with tab1:
         df = pd.DataFrame(data, index=years)
         fig2, ax2 = plt.subplots()
         df.plot(kind="barh", stacked=True, ax=ax2, color=["#4CAF50", "#FFC107", "#9E9E9E"])
-        ax2.set_xlabel("개수")
-        ax2.set_ylabel("연근")
-        ax2.set_title("연근 별 크기 분포")
+        ax2.set_xlabel("개수", fontproperties=font_prop)
+        ax2.set_ylabel("연근", fontproperties=font_prop)
+        ax2.set_title("연근 별 크기 분포", fontproperties=font_prop)
         st.pyplot(fig2)
 
 # 두 번째 탭
@@ -182,7 +182,8 @@ with tab2:
                 [39.4, 18.8, 14.5, 10.7, 9.09, 7.49],
                 labels=["무게 부족", "스크래치", "찍힘", "벌레", "작색", "동외종"],
                 autopct="%.1f%%",
-                startangle=90,
+                startangle=90, 
+                textprops={"fontproperties": font_manager.FontProperties(fname=font_path)}
                 colors=["#fde0dd", "#fa9fb5", "#c51b8a", "#fdae6b", "#fd8d3c", "#e6550d"],
             )
             ax2.set_title("농장 분석")
