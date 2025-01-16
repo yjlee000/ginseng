@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 # 한글 폰트 설정
-font_path = "fonts/malgun.ttf"  # Windows의 경우
+font_path = "./fonts/malgun.ttf"  # Windows의 경우
 font_name = font_manager.FontProperties(fname=font_path).get_name()
 rc('font', family=font_name)
 
