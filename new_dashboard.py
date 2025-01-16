@@ -110,7 +110,7 @@ with tab1:
 
     # 원형 차트
     with col2:
-        st.subheader("4년근")
+        st.subheader("4년근", fontproperties=font_prop)
         fig, ax = plt.subplots()
         ax.pie([40, 35, 25], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90, 
               textprops={"fontproperties": font_manager.FontProperties(fname=font_path)})
@@ -118,7 +118,7 @@ with tab1:
         st.pyplot(fig)
 
     with col3:
-        st.subheader("5년근")
+        st.subheader("5년근", fontproperties=font_prop)
         fig, ax = plt.subplots()
         ax.pie([50, 30, 20], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90, 
               textprops={"fontproperties": font_manager.FontProperties(fname=font_path)})
@@ -126,7 +126,7 @@ with tab1:
         st.pyplot(fig)
 
     with col3:
-        st.subheader("6년근")
+        st.subheader("6년근", fontproperties=font_prop)
         fig, ax = plt.subplots()
         ax.pie([60, 25, 15], labels=["대", "중", "소"], autopct="%1.1f%%", startangle=90, 
               textprops={"fontproperties": font_manager.FontProperties(fname=font_path)})
@@ -174,7 +174,7 @@ with tab2:
         with pie_cols[0]:
             fig1, ax1 = plt.subplots()
             ax1.pie([75.6, 24.4], labels=["정상", "불량"], autopct="%.1f%%", startangle=90, colors=["green", "orange"])
-            ax1.set_title("누적 데이터")
+            ax1.set_title("누적 데이터", fontproperties=font_prop)
             st.pyplot(fig1)
         with pie_cols[1]:
             fig2, ax2 = plt.subplots()
@@ -186,5 +186,5 @@ with tab2:
                 textprops={"fontproperties": font_manager.FontProperties(fname=font_path)},
                 colors=["#fde0dd", "#fa9fb5", "#c51b8a", "#fdae6b", "#fd8d3c", "#e6550d"],
             )
-            ax2.set_title("농장 분석")
+            ax2.set_title("농장 분석", fontproperties=font_prop)
             st.pyplot(fig2)
