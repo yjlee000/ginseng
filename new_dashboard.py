@@ -183,7 +183,7 @@ with tab2:
                 labels=["무게 부족", "스크래치", "찍힘", "벌레", "작색", "동외종"],
                 autopct="%.1f%%",
                 startangle=90, 
-                textprops={"fontproperties": font_manager.FontProperties(fname=font_path)}
+                textprops={"fontproperties": font_manager.FontProperties(fname=font_path)},
                 colors=["#fde0dd", "#fa9fb5", "#c51b8a", "#fdae6b", "#fd8d3c", "#e6550d"],
             )
             ax2.set_title("농장 분석")
