@@ -19,26 +19,32 @@ st.set_page_config(
     layout="wide",
 )
 
-def animate_number(value, key, duration=2, suffix=""):
-    value = int(value)
-    step = max(1, value // (duration * 10))
+def animate_number(value, key, duration=2, suffix="", decimal_places=0):
+    value = float(value)  # float로 변환하여 소수점 처리 가능하게 함
+    step = max(1, int(value) // (duration * 10))
     placeholder = st.empty()
-    for i in range(0, value + step, step):
+    
+    # 소수점 자리수 처리
+    for i in range(0, int(value) + step, step):
+        formatted_value = f"{i:,.{decimal_places}f}"  # 소수점 자리수를 적용
         placeholder.markdown(
             f"""
             <div style="border: 2px solid #ccc; border-radius: 10px; padding: 20px; text-align: center; background-color: #f9f9f9;">
                 <div style="font-size: 18px; font-weight: bold; color: #666;">{key}</div>
-                <div style="font-size: 32px; font-weight: bold; color: #333;">{i:,}{suffix}</div>
+                <div style="font-size: 32px; font-weight: bold; color: #333;">{formatted_value}{suffix}</div>
             </div>
             """,
             unsafe_allow_html=True,
         )
         time.sleep(0.05)
+        
+    # 마지막 값 표시
+    formatted_value = f"{value:,.{decimal_places}f}"
     placeholder.markdown(
         f"""
         <div style="border: 2px solid #ccc; border-radius: 10px; padding: 20px; text-align: center; background-color: #f9f9f9;">
             <div style="font-size: 18px; font-weight: bold; color: #666;">{key}</div>
-            <div style="font-size: 32px; font-weight: bold; color: #333;">{value:,}{suffix}</div>
+            <div style="font-size: 32px; font-weight: bold; color: #333;">{formatted_value}{suffix}</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -61,7 +67,7 @@ if uploaded_file is not None:
     abnormal_rate = (abnormal / total) * 100
 
     weight = df['중량 (g)'].sum()
-    df_normal = df[df['불량']==0]
+    df_normal = df[df['불량'] == 0]
     weight_normal = df_normal['중량 (g)'].sum()
 
     # 정보
@@ -80,6 +86,8 @@ if uploaded_file is not None:
     """,
     unsafe_allow_html=True
     )
+
+    # 상단 통계
     col1, col2, col3, col4, col5, col6, col7 = st.columns([1, 1, 1, 1, 1.5, 1.5, 1.5])
     with col1:
         animate_number(total, "총합")
@@ -90,11 +98,12 @@ if uploaded_file is not None:
     with col4:
         animate_number(round(abnormal_rate, 2), "불량률", suffix="%")
     with col5:
-        animate_number(round(weight / 1000), "투입 중량", suffix="kg")
+        animate_number(weight / 1000, "투입 중량", suffix="kg", decimal_places=2)  # 소수점 2자리
     with col6:
-        animate_number(round(weight_normal / 1000), "선별 완료 중량", suffix="kg")
+        animate_number(weight_normal / 1000, "선별 완료 중량", suffix="kg", decimal_places=2)  # 소수점 2자리
     with col7:
         animate_number(67, "선별 속도", suffix="개/분")
+
     
     # 탭 구성
     tab1, tab2 = st.tabs(["기본 정보 및 차트", "이미지 분석 및 결과"])
