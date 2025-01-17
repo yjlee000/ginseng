@@ -282,7 +282,7 @@ if uploaded_file is not None:
                 fig2, ax2 = plt.subplots()
                 ax2.pie(
                     [39.4, 18.8, 14.5, 10.7, 9.09, 7.49],
-                    labels=["무게 부족", "스크래치", "찍힘", "벌레", "작색", "동외종"],
+                    labels=["무게 부족", "스크래치", "찍힘", "벌레", "작색", "등외품"],
                     autopct="%.1f%%",
                     startangle=90, 
                     textprops={"fontproperties": font_manager.FontProperties(fname=font_path)},
