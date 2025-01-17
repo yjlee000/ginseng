@@ -276,7 +276,7 @@ if uploaded_file is not None:
                     textprops={"fontproperties": font_manager.FontProperties(fname=font_path)},
                     colors=["#fdae6b", "#fd8d3c", "#e6550d"],
                 )
-                ax1.set_title("누적 데이터", fontproperties=font_prop)
+                ax1.set_title("불량 데이터", fontproperties=font_prop)
                 st.pyplot(fig1)
             with pie_cols[1]:
                 fig2, ax2 = plt.subplots()
