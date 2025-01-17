@@ -288,7 +288,7 @@ if uploaded_file is not None:
                     textprops={"fontproperties": font_manager.FontProperties(fname=font_path)},
                     colors=["#fde0dd", "#fa9fb5", "#c51b8a", "#fdae6b", "#fd8d3c", "#e6550d"],
                 )
-                ax2.set_title("농장 분석", fontproperties=font_prop)
+                ax2.set_title("파삼 분석", fontproperties=font_prop)
                 st.pyplot(fig2)
 
 else:
