@@ -104,6 +104,8 @@ if uploaded_file is not None:
     with col7:
         animate_number(67, "선별 속도", suffix="개/분")
 
+    st.markdown(f"<br>",
+                unsafe_allow_html=True)
     
     # 탭 구성
     tab1, tab2 = st.tabs(["기본 정보 및 차트", "이미지 분석 및 결과"])
