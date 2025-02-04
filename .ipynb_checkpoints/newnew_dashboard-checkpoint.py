@@ -151,6 +151,7 @@ def animate_number(value, key, duration=2, suffix="", decimal_places=0):
         """,
         unsafe_allow_html=True,
     )
+    st.session_state.total_animated = True  # 애니메이션이 한 번만 실행되도록 설정
 
 
 # CSV 파일 업로드
@@ -204,7 +205,7 @@ if uploaded_file is not None:
     
     
     # 농가별 데이터프레임 표시
-    st.dataframe(farm_summary)
+    st.dataframe(farm_summary, use_container_width=True)
     
     
     
