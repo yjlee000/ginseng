@@ -18,7 +18,7 @@ if selected_farm is None:
     st.warning("메인 페이지에서 농가를 선택해주세요!")
 else:
     st.markdown(f"""
-    <h3 style="text-align: center;">{selected_farm} 6년근 데이터</h3>
+    <h1 style="text-align: center;">{selected_farm}의 4년근 데이터</h1>
 """, unsafe_allow_html=True)
     
     st.markdown("<br><br>", unsafe_allow_html=True)
@@ -26,9 +26,7 @@ else:
     # CSV 데이터 로드
     df = pd.read_csv('dangerousginseng_extended_2000_new.csv')
     df = df[df['농가 명'] == selected_farm]
-    df = df[df['연근(4,5,6년근)'] == '6년근']
-    df = df.reset_index(drop=True)  # 기존 인덱스를 제거하고 0부터 다시 부여
-
+    df = df[df['연근(4,5,6년근)'] == '4년근']
 
     # 불량 계산
     df['불량'] = df[['등외품', '재투입', '불량']].max(axis=1)
@@ -75,7 +73,7 @@ else:
 
     # 4년근 데이터 필터링
     grade_counts = df['등급 판정 결과'].value_counts()
-    four_year = [grade_counts.get(f"6년근 {size}", 0) for size in ["소", "중", "대"]]
+    four_year = [grade_counts.get(f"4년근 {size}", 0) for size in ["소", "중", "대"]]
 
     col1, space2, col2, space3, col3, space4 = st.columns([1, 0.3, 1, 0.3, 1, 0.3])
 
@@ -89,7 +87,7 @@ else:
 
     # Pie Chart
     with col2:
-        st.subheader("6년근 파이 차트")
+        st.subheader("4년근 파이 차트")
         fig, ax = plt.subplots()
         wedges, texts, autotexts = ax.pie(
             four_year,
@@ -107,7 +105,7 @@ else:
     with col3:
         st.subheader('크기 선별 현황')
         sizes = ['소', '중', '대']
-        df_bar = pd.DataFrame({size: [df['등급 판정 결과'].str.contains(f"6년근 {size}").sum()] for size in sizes})
+        df_bar = pd.DataFrame({size: [df['등급 판정 결과'].str.contains(f"4년근 {size}").sum()] for size in sizes})
 
         fig2, ax2 = plt.subplots()
         ax2.barh(sizes, df_bar.iloc[0], color=green_colors[:3])
