@@ -115,6 +115,8 @@ st.markdown(
 unsafe_allow_html=True
 )
 
+
+
 hide_pages_style = """
     <style>
         section[data-testid="stSidebarNav"] ul {
@@ -123,6 +125,15 @@ hide_pages_style = """
     </style>
 """
 st.markdown(hide_pages_style, unsafe_allow_html=True)
+
+# # 사이드바 제목
+# st.sidebar.title("연근 데이터")
+
+# # 버튼 없이 페이지 링크 추가
+# st.sidebar.page_link("pages/1_4year.py", label="4년근")
+# st.sidebar.page_link("pages/2_5year.py", label="5년근")
+# st.sidebar.page_link("pages/3_6year.py", label="6년근")
+
 
 # CSV 데이터 로드
 df = pd.read_csv('dangerousginseng_extended_2000_new.csv')
