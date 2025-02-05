@@ -9,6 +9,17 @@ st.set_page_config(
     layout="wide",
 )
 
+st.markdown(
+    """
+    <style>
+    .main {
+        background-color: #d14949;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # 색상 변경 
 green_colors = ["#A9C46C", "#809D3C", "#5D8736", "#5D8736"]
 # ["#327e54", "#0e7560", "#006a68", "#065f68", "#215363", "#2f4858"]
@@ -27,22 +38,22 @@ unsafe_allow_html=True
 
 
 
-# ✅ 💡 🚀 강제적으로 기본 네비게이션 숨기기 (자동 생성되는 "year year year" 제거)
-st.markdown("""
+hide_pages_style = """
     <style>
-        section[data-testid="stSidebarNav"] {display: none !important;}
+        section[data-testid="stSidebarNav"] ul {
+            display: none;
+        }
     </style>
-    """,
-    unsafe_allow_html=True
-)
+"""
+st.markdown(hide_pages_style, unsafe_allow_html=True)
 
-# 사이드바 제목
-st.sidebar.title("연근 데이터")
+# # 사이드바 제목
+# st.sidebar.title("연근 데이터")
 
-# 버튼 없이 페이지 링크 추가
-st.sidebar.page_link("pages/4year.py", label="4년근")
-st.sidebar.page_link("pages/5year.py", label="5년근")
-st.sidebar.page_link("pages/6year.py", label="6년근")
+# # 버튼 없이 페이지 링크 추가
+# st.sidebar.page_link("pages/1_4year.py", label="4년근")
+# st.sidebar.page_link("pages/2_5year.py", label="5년근")
+# st.sidebar.page_link("pages/3_6year.py", label="6년근")
 
 
 # CSV 데이터 로드
@@ -62,7 +73,7 @@ col1, col2, space1, col3, space2, col4, col5 = st.columns([0.6, 1, 0.2, 1, 0.2, 
 with col2:
     animate_number(total, "총합", "#f9f9f9")
 with col3:
-    animate_number(normal, "정상", "#D2E0FB")
+    animate_number(normal, "정상", "#E5F0D4")
 with col4:
     animate_number(abnormal, "불량", "#FFC5C5")
 

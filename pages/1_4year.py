@@ -14,11 +14,17 @@ green_colors = ["#184A2F", "#1A7043", "#198049"]
 # 선택된 농가 정보 가져오기
 selected_farm = st.session_state.get("selected_farm", None)
 
+# # 버튼 없이 페이지 링크 추가
+# st.sidebar.page_link("pages/4year.py", label="4년근")
+# st.sidebar.page_link("pages/5year.py", label="5년근")
+# st.sidebar.page_link("pages/6year.py", label="6년근")
+
+
 if selected_farm is None:
     st.warning("메인 페이지에서 농가를 선택해주세요!")
 else:
     st.markdown(f"""
-    <h1 style="text-align: center;">{selected_farm}의 4년근 데이터</h1>
+    <h3 style="text-align: center;">{selected_farm} 4년근 데이터</h3>
 """, unsafe_allow_html=True)
     
     st.markdown("<br><br>", unsafe_allow_html=True)
@@ -42,7 +48,7 @@ else:
     with col2:
         animate_number(total, "총합", "#f9f9f9")
     with col3:
-        animate_number(normal, "정상", "#D2E0FB")
+        animate_number(normal, "정상", "#E5F0D4")
     with col4:
         animate_number(abnormal, "불량", "#FFC5C5")
     
@@ -87,7 +93,7 @@ else:
 
     # Pie Chart
     with col2:
-        st.subheader("4년근 파이 차트")
+        st.subheader("크기 분포")
         fig, ax = plt.subplots()
         wedges, texts, autotexts = ax.pie(
             four_year,
@@ -103,7 +109,7 @@ else:
 
     # Bar Chart
     with col3:
-        st.subheader('크기 선별 현황')
+        st.subheader('크기 별 선별 현황')
         sizes = ['소', '중', '대']
         df_bar = pd.DataFrame({size: [df['등급 판정 결과'].str.contains(f"4년근 {size}").sum()] for size in sizes})
 
