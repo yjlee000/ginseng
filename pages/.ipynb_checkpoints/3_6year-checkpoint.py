@@ -53,7 +53,7 @@ else:
     with col4:
         animate_number(abnormal, "불량", "#FFC5C5")
     
-    st.markdown("<br><hr><br>", unsafe_allow_html=True)
+    # st.markdown("<br><hr><br>", unsafe_allow_html=True)
 
     # 정보
     farm_number = df['농가 번호'][0]
@@ -78,50 +78,142 @@ else:
                 </div>
                 """
 
-    # 4년근 데이터 필터링
+    # 6년근 데이터 필터링
     grade_counts = df['등급 판정 결과'].value_counts()
-    four_year = [grade_counts.get(f"6년근 {size}", 0) for size in ["소", "중", "대"]]
+    six_year = [grade_counts.get(f"6년근 {size}", 0) for size in ["소", "중", "대"]]
 
-    col1, space2, col2, space3, col3, space4 = st.columns([1, 0.3, 1, 0.3, 1, 0.3])
 
-    # Basic Information
-    with col1:
-        st.subheader('기본 정보')
-        st.markdown(
-                basic_information,
-                unsafe_allow_html=True
+    # 탭 구성
+    tab1, tab2 = st.tabs(['Basic Information', 'Images'])
+
+    with tab1:
+        col1, space2, col2, space3, col3, space4 = st.columns([1, 0.3, 1, 0.3, 1, 0.3])
+
+        # Basic Information
+        with col1:
+            st.subheader('기본 정보')
+            st.markdown(
+                    basic_information,
+                    unsafe_allow_html=True
+                )
+    
+        # Pie Chart
+        with col2:
+            st.subheader("크기 분포")
+            fig, ax = plt.subplots()
+            wedges, texts, autotexts = ax.pie(
+                six_year,
+                labels=["대", "중", "소"],
+                autopct="%.1f%%",
+                startangle=90,
+                textprops={"fontproperties": font_prop},
+                colors=green_colors[:3]
             )
+            for autotext in autotexts:
+                autotext.set_color("white")
+            st.pyplot(fig)
+    
+        # Bar Chart
+        with col3:
+            st.subheader('크기 별 선별 현황')
+            sizes = ['소', '중', '대']
+            df_bar = pd.DataFrame({size: [df['등급 판정 결과'].str.contains(f"6년근 {size}").sum()] for size in sizes})
+    
+            fig2, ax2 = plt.subplots()
+            ax2.barh(sizes, df_bar.iloc[0], color=green_colors[:3])
+            ax2.set_yticklabels(["대", "중", "소"], 
+                                fontproperties=font_manager.FontProperties(fname=font_path))
+            
+            # 축 라벨 및 제목 설정
+            ax2.set_xlabel("개수", fontproperties=font_manager.FontProperties(fname=font_path))
+            ax2.set_ylabel("크기", fontproperties=font_manager.FontProperties(fname=font_path))
+            ax2.set_title("크기 분포", fontproperties=font_manager.FontProperties(fname=font_path))
+    
+            st.pyplot(fig2)
+    with tab2:
+         # 레이아웃 설정
+        cols_main = st.columns([1, 0.5, 1.5])
+    
+        # 이미지 6개를 2x3 형태로 배치
+        with cols_main[0]:
+            st.write("### 2x3 이미지")
+            img_cols = st.columns(3)
+            images = ["images/image1.png", "images/image2.png", "images/image3.png", "images/image4.png", "images/image5.png", "images/image6.png"]
+            for i in range(6):
+                with img_cols[i % 3]:
+                    st.image(images[i], use_container_width=True)
+    
+        # 분석 결과 이미지
+        with cols_main[1]:
+            st.write("### 결과 이미지")
+            st.image("images/result_image.png", caption="분석 결과 이미지", use_container_width=True)
+    
+        # 원형 그래프
+        with cols_main[2]:
+            st.write("### 원형 그래프")
+            pie_cols = st.columns(2)
+            with pie_cols[0]:
+                fig1, ax1 = plt.subplots()
+                ax1.pie([75.6, 24.4], labels=["정상", "불량"], autopct="%.1f%%", startangle=90, 
+                        textprops={"fontproperties": font_manager.FontProperties(fname=font_path)}, 
+                        colors=["green", "orange"])
+                ax1.set_title("누적 데이터", fontproperties=font_prop)
+                st.pyplot(fig1)
+            with pie_cols[1]:
+                fig2, ax2 = plt.subplots()
+                ax2.pie(
+                    [39.4, 18.8, 14.5, 10.7, 9.09, 7.49],
+                    labels=["무게 부족", "스크래치", "찍힘", "벌레", "작색", "동외종"],
+                    autopct="%.1f%%",
+                    startangle=90, 
+                    textprops={"fontproperties": font_manager.FontProperties(fname=font_path)},
+                    colors=["#fde0dd", "#fa9fb5", "#c51b8a", "#fdae6b", "#fd8d3c", "#e6550d"],
+                )
+                ax2.set_title("농장 분석", fontproperties=font_prop)
+                st.pyplot(fig2)
 
-    # Pie Chart
-    with col2:
-        st.subheader("크기 분포")
-        fig, ax = plt.subplots()
-        wedges, texts, autotexts = ax.pie(
-            four_year,
-            labels=["대", "중", "소"],
-            autopct="%.1f%%",
-            startangle=90,
-            textprops={"fontproperties": font_prop},
-            colors=green_colors[:3]
-        )
-        for autotext in autotexts:
-            autotext.set_color("white")
-        st.pyplot(fig)
 
-    # Bar Chart
-    with col3:
-        st.subheader('크기 별 선별 현황')
-        sizes = ['소', '중', '대']
-        df_bar = pd.DataFrame({size: [df['등급 판정 결과'].str.contains(f"6년근 {size}").sum()] for size in sizes})
 
-        fig2, ax2 = plt.subplots()
-        ax2.barh(sizes, df_bar.iloc[0], color=green_colors[:3])
-        ax2.set_yticklabels(["대", "중", "소"], 
-                            fontproperties=font_manager.FontProperties(fname=font_path))
+    # col1, space2, col2, space3, col3, space4 = st.columns([1, 0.3, 1, 0.3, 1, 0.3])
+
+    # # Basic Information
+    # with col1:
+    #     st.subheader('기본 정보')
+    #     st.markdown(
+    #             basic_information,
+    #             unsafe_allow_html=True
+    #         )
+
+    # # Pie Chart
+    # with col2:
+    #     st.subheader("크기 분포")
+    #     fig, ax = plt.subplots()
+    #     wedges, texts, autotexts = ax.pie(
+    #         six_year,
+    #         labels=["대", "중", "소"],
+    #         autopct="%.1f%%",
+    #         startangle=90,
+    #         textprops={"fontproperties": font_prop},
+    #         colors=green_colors[:3]
+    #     )
+    #     for autotext in autotexts:
+    #         autotext.set_color("white")
+    #     st.pyplot(fig)
+
+    # # Bar Chart
+    # with col3:
+    #     st.subheader('크기 별 선별 현황')
+    #     sizes = ['소', '중', '대']
+    #     df_bar = pd.DataFrame({size: [df['등급 판정 결과'].str.contains(f"6년근 {size}").sum()] for size in sizes})
+
+    #     fig2, ax2 = plt.subplots()
+    #     ax2.barh(sizes, df_bar.iloc[0], color=green_colors[:3])
+    #     ax2.set_yticklabels(["대", "중", "소"], 
+    #                         fontproperties=font_manager.FontProperties(fname=font_path))
         
-        # 축 라벨 및 제목 설정
-        ax2.set_xlabel("개수", fontproperties=font_manager.FontProperties(fname=font_path))
-        ax2.set_ylabel("크기", fontproperties=font_manager.FontProperties(fname=font_path))
-        ax2.set_title("크기 분포", fontproperties=font_manager.FontProperties(fname=font_path))
+    #     # 축 라벨 및 제목 설정
+    #     ax2.set_xlabel("개수", fontproperties=font_manager.FontProperties(fname=font_path))
+    #     ax2.set_ylabel("크기", fontproperties=font_manager.FontProperties(fname=font_path))
+    #     ax2.set_title("크기 분포", fontproperties=font_manager.FontProperties(fname=font_path))
 
-        st.pyplot(fig2)
+    #     st.pyplot(fig2)
