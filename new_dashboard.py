@@ -129,10 +129,7 @@
 # # # 사이드바 제목
 # # st.sidebar.title("연근 데이터")
 
-# # # 버튼 없이 페이지 링크 추가
-st.sidebar.page_link("pages/1_4year.py", label="4년근")
-st.sidebar.page_link("pages/2_5year.py", label="5년근")
-st.sidebar.page_link("pages/3_6year.py", label="6년근")
+
 
 
 # # CSV 데이터 로드
@@ -178,6 +175,10 @@ st.set_page_config(
     layout="wide",
 )
 
+# # # 버튼 없이 페이지 링크 추가
+st.sidebar.page_link("pages/1_4year.py", label="4년근")
+st.sidebar.page_link("pages/2_5year.py", label="5년근")
+st.sidebar.page_link("pages/3_6year.py", label="6년근")
 
 # 색상 변경 
 green_colors = ["#A9C46C", "#809D3C", "#5D8736", "#5D8736"]
