@@ -176,25 +176,25 @@ st.set_page_config(
     layout="wide",
 )
 
-hide_pages_style = """
-    <style>
-        section[data-testid="stSidebarNav"] ul {
-            display: none;
-        }
-    </style>
-"""
-st.markdown(hide_pages_style, unsafe_allow_html=True)
+# hide_pages_style = """
+#     <style>
+#         section[data-testid="stSidebarNav"] ul {
+#             display: none;
+#         }
+#     </style>
+# """
+# st.markdown(hide_pages_style, unsafe_allow_html=True)
 
-st.sidebar.title("📂 페이지 이동")
+# st.sidebar.title("📂 페이지 이동")
 
-if st.sidebar.button("4년근 데이터"):
-    st.switch_page("pages/1_4_years.py")
+# if st.sidebar.button("4년근 데이터"):
+#     st.switch_page("pages/1_4_years.py")
 
-if st.sidebar.button("5년근 데이터"):
-    st.switch_page("pages/2_5_years.py")
+# if st.sidebar.button("5년근 데이터"):
+#     st.switch_page("pages/2_5_years.py")
 
-if st.sidebar.button("6년근 데이터"):
-    st.switch_page("pages/3_6_years.py")
+# if st.sidebar.button("6년근 데이터"):
+#     st.switch_page("pages/3_6_years.py")
 
 # 색상 변경 
 green_colors = ["#A9C46C", "#809D3C", "#5D8736", "#5D8736"]
