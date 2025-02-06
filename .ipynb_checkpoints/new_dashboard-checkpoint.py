@@ -176,9 +176,9 @@ st.set_page_config(
 )
 
 # # # 버튼 없이 페이지 링크 추가
-st.sidebar.page_link("pages/1_4_years.py", label="4년근")
-st.sidebar.page_link("pages/2_5_years.py", label="5년근")
-st.sidebar.page_link("pages/3_6_years.py", label="6년근")
+# st.sidebar.page_link("pages/1_4_years.py", label="4년근")
+# st.sidebar.page_link("pages/2_5_years.py", label="5년근")
+# st.sidebar.page_link("pages/3_6_years.py", label="6년근")
 
 # 색상 변경 
 green_colors = ["#A9C46C", "#809D3C", "#5D8736", "#5D8736"]
