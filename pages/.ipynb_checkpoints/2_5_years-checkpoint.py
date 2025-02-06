@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from dash_utils import * 
 from matplotlib import font_manager
+import random
 
 # 한글 폰트 설정
 font_path = "./fonts/Nanum_Gothic/NanumGothic-Bold.ttf"  # ttf 파일 경로
@@ -136,7 +137,11 @@ else:
             for i in range(6):
                 with img_cols[i % 3]:
                     st.image(images[i], use_container_width=True)
-    
+
+        random_values = [random.uniform(5, 40) for _ in range(6)]
+        random_sum = sum(random_values)
+        random_values = [value / random_sum * 100 for value in random_values]
+        
         # 분석 결과 이미지
         with cols_main[1]:
             st.write("### 결과 이미지")
@@ -148,20 +153,20 @@ else:
             pie_cols = st.columns(2)
             with pie_cols[0]:
                 fig1, ax1 = plt.subplots()
-                ax1.pie([75.6, 24.4], labels=["정상", "불량"], autopct="%.1f%%", startangle=90, 
+                ax1.pie([normal, abnormal], labels=["정상", "불량"], autopct="%.1f%%", startangle=90, 
                         textprops={"fontproperties": font_manager.FontProperties(fname=font_path)}, 
-                        colors=["green", "orange"])
+                        colors=["#327E54", "#F7C708"])
                 ax1.set_title("누적 데이터", fontproperties=font_prop)
                 st.pyplot(fig1)
             with pie_cols[1]:
                 fig2, ax2 = plt.subplots()
                 ax2.pie(
-                    [39.4, 18.8, 14.5, 10.7, 9.09, 7.49],
+                    random_values, 
                     labels=["무게 부족", "스크래치", "찍힘", "벌레", "작색", "동외종"],
                     autopct="%.1f%%",
                     startangle=90, 
                     textprops={"fontproperties": font_manager.FontProperties(fname=font_path)},
-                    colors=["#fde0dd", "#fa9fb5", "#c51b8a", "#fdae6b", "#fd8d3c", "#e6550d"],
+                    colors=["#F7AA07", "#F7E407", "#F7C707", "#F78B07", "#D5F707", "#F7D85A"],
                 )
-                ax2.set_title("농장 분석", fontproperties=font_prop)
+                ax2.set_title("불량 분석", fontproperties=font_prop)
                 st.pyplot(fig2)
