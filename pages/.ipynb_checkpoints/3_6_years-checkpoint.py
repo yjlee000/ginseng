@@ -49,7 +49,7 @@ else:
     with col4:
         animate_number(abnormal, "불량", "#FADA7A")
     
-    # st.markdown("<br><hr><br>", unsafe_allow_html=True)
+    st.markdown("<br><br>", unsafe_allow_html=True)
 
     # 정보
     farm_number = df['농가 번호'][0]
@@ -107,6 +107,7 @@ else:
             )
             for autotext in autotexts:
                 autotext.set_color("white")
+            fig.set_facecolor('#F4F4F4')  # 배경색을 연한 회색으로 설정
             st.pyplot(fig)
     
         # Bar Chart
@@ -124,6 +125,8 @@ else:
             ax2.set_xlabel("개수", fontproperties=font_manager.FontProperties(fname=font_path))
             ax2.set_ylabel("크기", fontproperties=font_manager.FontProperties(fname=font_path))
             ax2.set_title("크기 분포", fontproperties=font_manager.FontProperties(fname=font_path))
+
+            fig2.set_facecolor('#F4F4F4')  # 배경색을 연한 회색으로 설정
     
             st.pyplot(fig2)
     with tab2:
@@ -159,6 +162,7 @@ else:
                         textprops={"fontproperties": font_manager.FontProperties(fname=font_path)}, 
                         colors=["#327E54", "#F7C708"])
                 ax1.set_title("누적 데이터", fontproperties=font_prop)
+                fig1.set_facecolor('#F4F4F4')  # 배경색을 연한 회색으로 설정
                 st.pyplot(fig1)
             with pie_cols[1]:
                 fig2, ax2 = plt.subplots()
@@ -171,4 +175,5 @@ else:
                     colors=["#F7AA07", "#F7E407", "#F7C707", "#F78B07", "#D5F707", "#F7D85A"],
                 )
                 ax2.set_title("불량 분석", fontproperties=font_prop)
+                fig2.set_facecolor('#F4F4F4')  # 배경색을 연한 회색으로 설정
                 st.pyplot(fig2)
