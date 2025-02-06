@@ -130,7 +130,7 @@ else:
     
         # 이미지 6개를 2x3 형태로 배치
         with cols_main[0]:
-            st.write("### 2x3 이미지")
+            st.write("### 세부 이미지")
             img_cols = st.columns(3)
             images = ["images/image1.png", "images/image2.png", "images/image3.png", "images/image4.png", "images/image5.png", "images/image6.png"]
             for i in range(6):
