@@ -130,9 +130,9 @@
 # # st.sidebar.title("연근 데이터")
 
 # # # 버튼 없이 페이지 링크 추가
-# # st.sidebar.page_link("pages/1_4year.py", label="4년근")
-# # st.sidebar.page_link("pages/2_5year.py", label="5년근")
-# # st.sidebar.page_link("pages/3_6year.py", label="6년근")
+st.sidebar.page_link("pages/1_4year.py", label="4년근")
+st.sidebar.page_link("pages/2_5year.py", label="5년근")
+st.sidebar.page_link("pages/3_6year.py", label="6년근")
 
 
 # # CSV 데이터 로드
