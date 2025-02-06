@@ -75,7 +75,7 @@ with col2:
 with col3:
     animate_number(normal, "정상", "#E5F0D4")
 with col4:
-    animate_number(abnormal, "불량", "#FFC5C5")
+    animate_number(abnormal, "불량", "#FADA7A")
 
 st.markdown("<br>", unsafe_allow_html=True)
 

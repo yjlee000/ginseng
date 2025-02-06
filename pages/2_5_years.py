@@ -23,7 +23,7 @@ if selected_farm is None:
     st.warning("메인 페이지에서 농가를 선택해주세요!")
 else:
     st.markdown(f"""
-    <h3 style="text-align: center;">{selected_farm} 6년근 데이터</h3>
+    <h3 style="text-align: center;">{selected_farm} 5년근 데이터</h3>
 """, unsafe_allow_html=True)
     
     st.markdown("<br><br>", unsafe_allow_html=True)
@@ -31,7 +31,7 @@ else:
     # CSV 데이터 로드
     df = pd.read_csv('dangerousginseng_extended_2000_new.csv')
     df = df[df['농가 명'] == selected_farm]
-    df = df[df['연근(4,5,6년근)'] == '6년근']
+    df = df[df['연근(4,5,6년근)'] == '5년근']
     df = df.reset_index(drop=True)  # 기존 인덱스를 제거하고 0부터 다시 부여
 
 
@@ -49,9 +49,9 @@ else:
     with col2:
         animate_number(total, "총합", "#f9f9f9")
     with col3:
-        animate_number(normal, "정상", "#E5F0D4")
+        animate_number(normal, "정상", "#E5F0D4")  # D2E0FB
     with col4:
-        animate_number(abnormal, "불량", "#FFC5C5")
+        animate_number(abnormal, "불량", "#FADA7A")
     
     # st.markdown("<br><hr><br>", unsafe_allow_html=True)
 
@@ -78,13 +78,12 @@ else:
                 </div>
                 """
 
-    # 6년근 데이터 필터링
+    # 5년근 데이터 필터링
     grade_counts = df['등급 판정 결과'].value_counts()
-    six_year = [grade_counts.get(f"6년근 {size}", 0) for size in ["소", "중", "대"]]
-
+    five_year = [grade_counts.get(f"5년근 {size}", 0) for size in ["소", "중", "대"]]
 
     # 탭 구성
-    tab1, tab2 = st.tabs(['Basic Information', 'Images'])
+    tab1, tab2 = st.tabs(['기본 정보', '이미지'])
 
     with tab1:
         col1, space2, col2, space3, col3, space4 = st.columns([1, 0.3, 1, 0.3, 1, 0.3])
@@ -102,7 +101,7 @@ else:
             st.subheader("크기 분포")
             fig, ax = plt.subplots()
             wedges, texts, autotexts = ax.pie(
-                six_year,
+                five_year,
                 labels=["대", "중", "소"],
                 autopct="%.1f%%",
                 startangle=90,
@@ -117,7 +116,7 @@ else:
         with col3:
             st.subheader('크기 별 선별 현황')
             sizes = ['소', '중', '대']
-            df_bar = pd.DataFrame({size: [df['등급 판정 결과'].str.contains(f"6년근 {size}").sum()] for size in sizes})
+            df_bar = pd.DataFrame({size: [df['등급 판정 결과'].str.contains(f"5년근 {size}").sum()] for size in sizes})
     
             fig2, ax2 = plt.subplots()
             ax2.barh(sizes, df_bar.iloc[0], color=green_colors[:3])
@@ -173,7 +172,7 @@ else:
                 st.pyplot(fig2)
 
 
-
+    
     # col1, space2, col2, space3, col3, space4 = st.columns([1, 0.3, 1, 0.3, 1, 0.3])
 
     # # Basic Information
@@ -189,7 +188,7 @@ else:
     #     st.subheader("크기 분포")
     #     fig, ax = plt.subplots()
     #     wedges, texts, autotexts = ax.pie(
-    #         six_year,
+    #         four_year,
     #         labels=["대", "중", "소"],
     #         autopct="%.1f%%",
     #         startangle=90,
@@ -204,7 +203,7 @@ else:
     # with col3:
     #     st.subheader('크기 별 선별 현황')
     #     sizes = ['소', '중', '대']
-    #     df_bar = pd.DataFrame({size: [df['등급 판정 결과'].str.contains(f"6년근 {size}").sum()] for size in sizes})
+    #     df_bar = pd.DataFrame({size: [df['등급 판정 결과'].str.contains(f"5년근 {size}").sum()] for size in sizes})
 
     #     fig2, ax2 = plt.subplots()
     #     ax2.barh(sizes, df_bar.iloc[0], color=green_colors[:3])
