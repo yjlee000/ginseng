@@ -33,6 +33,7 @@ else:
     df = pd.read_csv('dangerousginseng_extended_2000_new.csv')
     df = df[df['농가 명'] == selected_farm]
     df = df[df['연근(4,5,6년근)'] == '4년근']
+    df = df.reset_index(drop=True)  # 기존 인덱스를 제거하고 0부터 다시 부여
 
     # 불량 계산
     df['불량'] = df[['등외품', '재투입', '불량']].max(axis=1)
