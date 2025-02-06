@@ -9,6 +9,16 @@ font_path = "./fonts/Nanum_Gothic/NanumGothic-Bold.ttf"  # ttf 파일 경로
 font_prop = font_manager.FontProperties(fname=font_path)
 
 green_colors = ["#184A2F", "#1A7043", "#198049"]
+# ["#A9C46C", "#809D3C", "#5D8736", "#5D8736"]
+
+# 선택된 농가 정보 가져오기
+selected_farm = st.session_state.get("selected_farm", None)
+
+# # 버튼 없이 페이지 링크 추가
+# st.sidebar.page_link("pages/4year.py", label="4년근")
+# st.sidebar.page_link("pages/5year.py", label="5년근")
+# st.sidebar.page_link("pages/6year.py", label="6년근")
+
 
 if selected_farm is None:
     st.warning("메인 페이지에서 농가를 선택해주세요!")
@@ -125,7 +135,7 @@ else:
     
         # 이미지 6개를 2x3 형태로 배치
         with cols_main[0]:
-            st.write("### 세부 이미지")
+            st.write("### 2x3 이미지")
             img_cols = st.columns(3)
             images = ["images/image1.png", "images/image2.png", "images/image3.png", "images/image4.png", "images/image5.png", "images/image6.png"]
             for i in range(6):
@@ -139,7 +149,7 @@ else:
     
         # 원형 그래프
         with cols_main[2]:
-            st.write("### 분석 차트")
+            st.write("### 원형 그래프")
             pie_cols = st.columns(2)
             with pie_cols[0]:
                 fig1, ax1 = plt.subplots()
