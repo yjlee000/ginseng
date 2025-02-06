@@ -176,6 +176,15 @@ st.set_page_config(
     layout="wide",
 )
 
+hide_pages_style = """
+    <style>
+        section[data-testid="stSidebarNav"] ul {
+            display: none;
+        }
+    </style>
+"""
+st.markdown(hide_pages_style, unsafe_allow_html=True)
+
 st.sidebar.title("📂 페이지 이동")
 
 if st.sidebar.button("4년근 데이터"):
