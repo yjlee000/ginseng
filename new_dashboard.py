@@ -167,6 +167,7 @@
 import streamlit as st
 import pandas as pd
 import time
+import matplotlib.pyplot as plt
 from dash_utils import * 
 
 # Streamlit 애플리케이션 설정
@@ -175,10 +176,16 @@ st.set_page_config(
     layout="wide",
 )
 
-# # # 버튼 없이 페이지 링크 추가
-# st.sidebar.page_link("pages/1_4_years.py", label="4년근")
-# st.sidebar.page_link("pages/2_5_years.py", label="5년근")
-# st.sidebar.page_link("pages/3_6_years.py", label="6년근")
+st.sidebar.title("📂 페이지 이동")
+
+if st.sidebar.button("4년근 데이터"):
+    st.switch_page("pages/1_4_years.py")
+
+if st.sidebar.button("5년근 데이터"):
+    st.switch_page("pages/2_5_years.py")
+
+if st.sidebar.button("6년근 데이터"):
+    st.switch_page("pages/3_6_years.py")
 
 # 색상 변경 
 green_colors = ["#A9C46C", "#809D3C", "#5D8736", "#5D8736"]
