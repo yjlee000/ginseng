@@ -3,3 +3,5 @@ pandas
 pillow
 folium
 streamlit_folium
+streamlit_option_menu
+st_on_hover_tabs
