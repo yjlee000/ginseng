@@ -35,7 +35,7 @@ with st.sidebar:
     st.markdown("<br>", unsafe_allow_html=True)
 
     # 사이드바 목록 & 아이콘 설정
-    tabs = on_hover_tabs(tabName=['통합 대시보드', '인삼농협 현황', '4년근', '5년근', '6년근'], 
+    tabs = on_hover_tabs(tabName=['home', '인삼농협 현황', '4년근', '5년근', '6년근'], 
                          iconName=['home','pin_drop', 'bar_chart_4_bars', 'bar_chart_4_bars', 'bar_chart_4_bars'],
                          styles = {'navtab': {'background-color':'#E5F0D4', # 메뉴 선택 색
                                               'color': '#414141', #아이콘 및 페이지명 색
@@ -59,7 +59,7 @@ green_colors = ["#184A2F", "#1A7043", "#198049"]
 # ["#327e54", "#0e7560", "#006a68", "#065f68", "#215363", "#2f4858"]
 
 # 탭 전환
-if tabs == '통합 대시보드':
+if tabs == 'home':
     # 상단 주요 통계 데이터
     st.markdown(
     """
