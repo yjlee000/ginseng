@@ -121,11 +121,16 @@ elif tabs == '인삼농협 현황':
     # 각 위치에 마커 추가
     for idx, row in locations.iterrows():
         name, lat, lon = row['name'], row['lat'], row['lon']
+        # 팝업에 HTML로 스타일을 추가하여 글자 크기 키우기
+        popup_html = f'<div style="font-size: 18px;">{name}</div>'
+        
         folium.Marker(
             location=[lat, lon],
             icon=folium.Icon(color='blue', icon='info-sign', icon_size=(40, 40)),
-            popup=name  # 마커 클릭 시 장소 이름 표시
+            popup=folium.Popup(popup_html, max_width=200)  # 팝업 크기도 조정 가능
         ).add_to(marker_cluster)
+
+    
     
     # 지도 표시
     st.markdown(f"""
