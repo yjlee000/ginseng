@@ -2,3 +2,4 @@ matplotlib
 pandas
 pillow
 folium
+streamlit_folium
