@@ -36,7 +36,7 @@ with st.sidebar:
 
     # 사이드바 목록 & 아이콘 설정
     tabs = on_hover_tabs(tabName=['통합 대시보드', '인삼농협 현황', '4년근', '5년근', '6년근'], 
-                         iconName=['home','menu', 'bar_chart_4_bars', 'bar_chart_4_bars', 'bar_chart_4_bars'],
+                         iconName=['home','pin_drop', 'bar_chart_4_bars', 'bar_chart_4_bars', 'bar_chart_4_bars'],
                          styles = {'navtab': {'background-color':'#E5F0D4', # 메뉴 선택 색
                                               'color': '#414141', #아이콘 및 페이지명 색
                                               'font-size': '16px',
