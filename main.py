@@ -28,6 +28,7 @@ font_prop = font_manager.FontProperties(fname=font_path)
 
 # 사이드 바 생성
 with st.sidebar:
+    
     # 사이드바 제목
     st.header("📊 Dashboard") 
     # 개행 추가 (간격 생성)
@@ -120,7 +121,7 @@ elif tabs == '인삼농협 현황':
     
     # 각 위치에 마커 추가
     for idx, row in locations.iterrows():
-        name, lat, lon = row['name'], row['lat'], row['lon']  # 순서를 name, lat, lon으로 맞춤
+        name, lat, lon = row['name'], row['lat'], row['lon']
         folium.Marker(
             location=[lat, lon],
             icon=folium.Icon(color='blue', icon='info-sign', icon_size=(40, 40)),
@@ -128,9 +129,17 @@ elif tabs == '인삼농협 현황':
         ).add_to(marker_cluster)
     
     # 지도 표시
-    st.title("전국 인삼농협 분포 현황")
-    st_folium(m, width=700)
-
+    st.markdown(f"""
+        <h3 style="text-align: center;">전국 인삼농협 분포 현황</h3><br>
+    """, unsafe_allow_html=True)
+    
+    # 열을 사용하여 가로로 가운데 정렬
+    col1, col2, col3 = st.columns([1, 4, 1])  # 가운데 열 비율을 4로 설정
+    
+    # 가운데 열에 지도 삽입
+    with col2:
+        st_folium(m, width=700, height=600)
+    
 # 탭 전환
 elif tabs == '4년근':
     # 선택된 농가 정보 가져오기
