@@ -4,4 +4,4 @@ pillow
 folium
 streamlit_folium
 streamlit-option-menu
-st_on_hover_tabs
+streamlit-on-Hover-tabs
