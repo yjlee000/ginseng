@@ -28,7 +28,6 @@ font_prop = font_manager.FontProperties(fname=font_path)
 
 # 사이드 바 생성
 with st.sidebar:
-    
     # 사이드바 제목
     st.header("📊 Dashboard") 
     # 개행 추가 (간격 생성)
@@ -134,7 +133,7 @@ elif tabs == '인삼농협 현황':
     """, unsafe_allow_html=True)
     
     # 열을 사용하여 가로로 가운데 정렬
-    col1, col2, col3 = st.columns([1, 4, 1])  # 가운데 열 비율을 4로 설정
+    col1, col2, col3 = st.columns([2, 6, 2])  # 가운데 열 비율을 4로 설정
     
     # 가운데 열에 지도 삽입
     with col2:
