@@ -701,7 +701,7 @@ elif selected_main_tab == '5년근' and selected_sub_tab == '수매 선별':
             # 분석 결과 이미지
             with cols_main[1]:
                 st.write("#### 결과 이미지")
-                st.image("images/5years_result.png", caption="분석 결과 이미지", use_container_width=True)
+                st.image("images/5years.png", caption="분석 결과 이미지", use_container_width=True)
         
             # 원형 그래프
             with cols_main[2]:
