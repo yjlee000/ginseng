@@ -36,6 +36,6 @@ https://youtu.be/wbbjw5vWdLY?si=vHU2dTvp8rTj27oz&t=24
 아래 링크 접속 후, csv 파일 Drag & Drop하면 
 자동으로 불량률 등 Dash Board 시각화
 
-🔗 https://ginseng-dashboard.streamlit.app/
+🔗 https://ginseng-monitor.streamlit.app/
 
 ## 3. 프로그래머 정보
